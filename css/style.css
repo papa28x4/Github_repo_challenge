@@ -1,0 +1,326 @@
+
+*,
+*::before,
+*::after,
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+  }
+
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* Common styles */
+a{
+    text-decoration: none;  
+}
+
+i{
+    font-weight: 400;
+}
+
+img{
+    width: 100%;  
+}
+
+ul{
+   list-style: none;
+}
+
+/* Utilities */
+.sticky {
+    position: sticky !important;
+}
+
+.hide{
+    display: none;
+}
+
+.fade{
+    opacity: 0;
+}
+
+.fade-in{
+    opacity: 1;
+}
+
+.d-block{
+    display: block;
+}
+
+.d-inline-block{
+    display: inline-block;
+}
+
+.dark{
+    border-top-color: #24292e !important;
+    vertical-align: middle;
+}
+
+/* Header */
+.nav{
+    height: 62px;
+    padding: 16px 32px;
+    background: #24292e;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+}
+
+.caret{
+    border-top: 4px solid #fff;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 0px solid transparent;
+}
+
+.lines{
+    position: relative;
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+}
+
+.h-line{
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 6px);
+    border: 1px solid #fff;
+    width: 12px;
+    height: 2px;
+}
+
+.v-line{
+    position: absolute;
+    border: 1px solid #fff;
+    width: 2px;
+    height: 12px;
+    top: calc(50% - 6px);
+    left: calc(50% - 1px);;
+}
+
+/* Tabs */
+.tabs{
+    height: 71px;
+    margin-top: 24px;
+    border-bottom: 1px solid #eee;
+    z-index: 10;
+}
+
+/* Click Drop-down */
+.drop-down{
+    margin-top: 50px;
+    position: relative;
+}
+
+.type>button{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 25%;
+    padding: 7px 16px 7px 7px;
+    cursor: pointer;
+}
+
+.type>button.list-visible{
+    cursor: default;
+}
+
+.type .type-list{
+    position: absolute;
+    border: 1px solid #ccc;
+    width: 25%;
+    border-radius: 5px;
+    padding-top: 7px;
+    transition: all 0.5s ease;
+    z-index: 20;
+}
+
+.type>button.list-visible+.type-list{
+    opacity: 1;
+    transform: translateY(20px);
+}
+
+.type .heading{
+    padding: 7px 16px 7px 16px;
+    height: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.type .cross,
+.type .check
+{
+    height: 18px;
+    width: 18px;
+}
+
+.type .cross{
+    cursor: pointer;
+}
+
+
+.type .options{
+   display: flex;
+   justify-content: flex-start;
+   padding: 8px;
+   padding-left: 20px;
+   border-top: 1px solid #ddd;
+   cursor: pointer;
+}
+
+.type .options:hover{
+    background-color: rgb(246, 248, 250);
+}
+
+.type .options span{
+    margin-left: 10px
+}
+
+/* Misc */
+.black{
+    margin-top: 50px;
+    margin-left: 50px;
+    background: #24292e;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.mini-wrapper{
+    display: flex;
+    margin-top: 24px;
+    border: 1px solid blue;
+    width: 100%;
+}
+.right-side{
+    width: 75%;
+    background-color: brown;
+}
+.mini-wrapper .circle{
+    margin-top: 30px;
+    /* border: 1px solid black; */
+    width: 25%;
+    margin-right: 40px;
+    position: relative;
+    overflow: visible;
+}
+.circle img{
+    border-radius: 50%;
+    border-width: 0;
+}
+.circle .status{
+    display: flex;
+    cursor: pointer;
+    position: absolute;
+    top: 72%;
+    left: 87%;
+}
+.squares{
+    border: 19px solid;
+    box-shadow: rgba(27, 31, 35, 0.15) 0px 1px 0px 0px;
+}
+.one{
+    border-color: #fff transparent #fff #fff;
+    border-right-width: 0;
+    border-top-left-radius: 38px;
+    border-bottom-left-radius: 38px;
+    position: relative;
+}
+.two{
+    background-color: #fff;
+    border-width: 0;
+    display: none;
+}
+.three{
+    border-color: #fff #fff #fff transparent;
+    border-left-width: 0;
+    border-top-right-radius: 38px;
+    border-bottom-right-radius: 38px;
+}
+.fa-comment{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.status:hover .two{
+    line-height: 38px;
+    display: block;
+    padding-left: 20px;
+    min-width: 100px;
+    font-size: 12px;
+    color: rgb(3, 102, 214);
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+  
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: 50%;
+    margin-left: -60px;
+  
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Tooltip arrow */
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #555 transparent;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+
+
+
+
+/* End of Misc */
