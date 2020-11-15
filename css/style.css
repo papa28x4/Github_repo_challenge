@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after,
@@ -7,12 +6,13 @@ html{
     padding: 0;
     box-sizing: border-box;
     outline: none;
+    user-select: none;
 }
 
 body{
     margin: 0;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font-family:'Segoe UI Regular';
     font-weight: 400;
   }
 
@@ -43,30 +43,30 @@ ul{
 .sticky {
     position: sticky !important;
 }
-
-.hide{
+.hide,
+.mobile{
     display: none;
 }
-
 .fade{
     opacity: 0;
 }
-
 .fade-in{
     opacity: 1;
 }
-
 .d-block{
     display: block;
 }
-
 .d-inline-block{
     display: inline-block;
 }
-
 .dark{
     border-top-color: #24292e !important;
     vertical-align: middle;
+}
+.small{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
 
 /* Header */
@@ -77,42 +77,139 @@ ul{
     display: flex;
     align-items: center;
 }
-
 .nav-item{
     display: flex;
     align-items: center;
 }
+.nav-item:not(:last-child){
+    margin-right: 16px;
+}
+.search-field{
+    flex: 1;
+}
+.nav-link{
+    color: white;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: 'Segoe UI Semibold';
+    /* font-weight: 400; */
+    font-style: normal;
+}
+.nav-link.sub{
+    margin-right: 16px;
+}
+.nav-link:hover{
+    color: rgba(255, 255, 255, 0.7);
+}
+.nav-icons{
+    fill: white;
+    vertical-align: middle;
+}
+.nav-icons:hover{
+    fill: rgba(255, 255, 255, 0.7);
+}
+
+
+
+ /* Search Input */
+ form{
+    background-color: #24292e;
+    height: 62px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    padding: 0;
+}
+#search-label{
+  display: flex;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(68, 77, 86);
+  align-items: center;
+}
+#search-key{
+    width: 19px;
+    height: 20px;
+    margin-right: 8px;
+}
+#search-box{
+    font-family:'Segoe UI Regular';
+    width: 243px;
+    padding: 0 12px;
+    height: 28px;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    border: none;
+    color: #24292e;
+    transition: width 0.5s ease;
+}
+::-webkit-input-placeholder { /* Edge */
+  color: rgba(255, 255, 255, 0.7);
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgba(255,255,255,0.7);
+}
+::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+#search-label:focus{
+  border: 1px solid #0366d6;
+  box-shadow: rgba(3,102,214,0.3) 0 0 0 3px
+}
+#search-box:focus{
+  background-color: #eee;
+  border: 1px solid #0366d6;
+  border-radius: 5px;
+  width: 40vw;
+}
+#search-box:focus+#search-key{
+  display: none;
+}
+#search-box:focus::-webkit-input-placeholder { /* Edge */
+  color: #6a737d;
+}
+#search-box:focus:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:#6a737d;
+}
+#search-box:focus::placeholder {
+  color:#6a737d;
+}
 
 .caret{
+    margin-left: 3px;
     border-top: 4px solid #fff;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-bottom: 0px solid transparent;
 }
-
-.lines{
+.drop-menus{
+    cursor: pointer;
+}
+.drop-menus:hover .caret{
+    opacity: 0.7;
+}
+.drop-menus:hover .plus,
+.drop-menus:hover .profile{
+    fill: rgba(255, 255, 255, 0.7);
+}
+.msg-link{
     position: relative;
-    width: 12px;
-    height: 12px;
-    margin-right: 4px;
 }
-
-.h-line{
+#notification-ball{
     position: absolute;
-    top: calc(50% - 1px);
-    left: calc(50% - 6px);
-    border: 1px solid #fff;
-    width: 12px;
-    height: 2px;
-}
-
-.v-line{
-    position: absolute;
-    border: 1px solid #fff;
-    width: 2px;
-    height: 12px;
-    top: calc(50% - 6px);
-    left: calc(50% - 1px);;
+    top: -6px;
+    left: 6px;
+    z-index: 20;
+    width: 14px;
+    height: 14px;
+    color: #fff;
+    background-image: linear-gradient(#54a3ff,#006eed);
+    background-clip: padding-box;
+    border: 2px solid #24292e;
+    border-radius: 50%;
 }
 
 /* Tabs */
@@ -255,8 +352,10 @@ ul{
     border-top-right-radius: 38px;
     border-bottom-right-radius: 38px;
 }
-.fa-comment{
+.comment{
     position: absolute;
+    width: 20px;
+    height: 15px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -271,27 +370,22 @@ ul{
     color: rgb(3, 102, 214);
 }
 
-/* Tooltip container */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-  }
-  
-  /* Tooltip text */
-  .tooltip .tooltiptext {
+
+   /* Tooltip text */
+   .circle .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #555;
+    background-color:#24292e;
     color: #fff;
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
+    font-size: 12px;
   
     /* Position the tooltip text */
     position: absolute;
     z-index: 1;
-    top: 125%;
+    top: 100%;
     left: 50%;
     margin-left: -60px;
   
@@ -301,24 +395,25 @@ ul{
   }
   
   /* Tooltip arrow */
-  .tooltip .tooltiptext::after {
+  .circle .tooltiptext::after {
     content: "";
     position: absolute;
-    top: -30%;
+    top: -40%;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent #555 transparent;
+    border-color: transparent transparent #24292e transparent;
   }
   
   /* Show the tooltip text when you mouse over the tooltip container */
-  .tooltip:hover .tooltiptext {
+  .circle:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
   }
 
-
+ 
+ 
 
 
 
