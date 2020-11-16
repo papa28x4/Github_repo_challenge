@@ -3,7 +3,12 @@ const typeList = document.querySelector('.type .type-list')
 const typeCurrentSelection = document.querySelector('.type button .current-selection')
 const typeOptions = document.querySelector('.type .type-options')
 const close = document.querySelector('.type .cross')
+const hamburger = document.querySelector('.menu.nav-icons')
+const mobileMenu = document.querySelector('.nav-item.search-field')
 
+hamburger.addEventListener('click', function(e){
+    mobileMenu.classList.toggle('desktop');
+})
 
 close.addEventListener('click', function(e){
     typeDropDownBtn.classList.toggle('list-visible')

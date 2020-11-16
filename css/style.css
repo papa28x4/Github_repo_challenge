@@ -67,6 +67,9 @@ ul{
     height: 20px;
     border-radius: 50%;
 }
+.pulls{
+    display: none;
+}
 
 /* Header */
 .nav{
@@ -117,7 +120,7 @@ ul{
 
 
  /* Search Input */
- form{
+ .nav-item .search-form{
     background-color: #24292e;
     height: 62px;
     padding: 5px;
@@ -418,7 +421,20 @@ ul{
   }
 /* End of Misc */
 
-
+@media(min-width:768px) and (max-width:991px){
+    .nav{
+        padding: 16px 24px 16px 24px;
+    }
+    .pulls{
+        display: initial;
+    }
+    .pull-requests{
+        display: none;
+    }
+    .nav-item #search-box{
+        width: 230px;
+    }
+}
 @media screen and (max-width: 767px){
     .nav{
         justify-content: space-between;
@@ -453,7 +469,7 @@ ul{
         align-items: flex-start;
         padding: 0 16px 16px 16px;
     }
-    .nav-item form{
+    .nav-item .search-form{
         margin-right: 0;
         width: 100%
     }
@@ -470,5 +486,19 @@ ul{
         margin-right: 0;
         display: block;
         width: 100%;
+    }
+    .nav-link.mobile.list span{
+        display: flex;
+        align-items: center;
+    }
+    .nav-link.mobile.list #username{
+       margin-left: 4px;
+    }
+    .nav-link .sign-out-form{
+        display: flex;
+        align-items: center;
+    }
+    .nav-link .sign-out{
+        margin-right: 3px;
     }
 }
