@@ -147,13 +147,13 @@ ul{
     color: #24292e;
     transition: width 0.5s ease;
 }
-::-webkit-input-placeholder { 
+#search-box::-webkit-input-placeholder { 
   color: rgba(255, 255, 255, 0.7);
 }
-:-ms-input-placeholder { 
+#search-box:-ms-input-placeholder { 
   color: rgba(255,255,255,0.7);
 }
-::placeholder {
+#search-box::placeholder {
   color: rgba(255,255,255,0.7);
   vertical-align: top;
 }
@@ -215,7 +215,7 @@ ul{
 
 /* ////////////////Tabs//////////////////// */
 .tabs{
-    height: 71px;
+    height: 49px;
     margin-top: 24px;
     border-bottom: 1px solid #eee;
     z-index: 10;
@@ -227,20 +227,15 @@ ul{
 }
 .right-part{
     flex-basis: 75%;
+    padding: 0 16px;
 }
-/* /////////////////Content//////////////// */
+/* /////////////////Content Left Part//////////////// */
 .content{
     display: flex;
     margin: 0 -16px;
 }
-/* .content .left-part{
-    flex: 1
-}
-.content .right-part{
-    flex: 3
-} */
 .left-part .circle{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     position: relative;
     overflow: visible;
 }
@@ -293,7 +288,10 @@ ul{
     font-size: 12px;
     color: rgb(3, 102, 214);
 }
-.left-part .profile-icons{
+.left-part .profile-icons,
+.right-part .profile-icons,
+.right-part .repo-license svg,
+.right-part .create-repo{
     fill: rgb(106, 115, 125);
     vertical-align: text-bottom;
 }
@@ -329,10 +327,12 @@ ul{
     color: rgb(88, 96, 105)
 }
 .left-part #followers-container a:hover,
-.left-part #followers-container a:hover>span{
+.left-part #followers-container a:hover>span,
+.right-part .meta:hover{
     color: #0366d6;
 }
-.left-part #followers-container a:hover>svg{
+.left-part #followers-container a:hover>svg,
+.right-part .meta:hover .profile-icons{
     fill : #0366d6;
 }
 .left-part .edit-profile-btn{
@@ -398,50 +398,257 @@ ul{
     font-size: 14px;
     color: #24292e;
 }
-/*/////////////// Click Drop-down ////////////////*/
-.drop-down{
-    margin-top: 50px;
-    position: relative;
+/* /////////////////Content Right Part//////////////// */
+.right-part .sub-nav{
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 30px;
+    color: #24292e;
+    border-bottom: 2px solid transparent;
+    font-weight: 400;
+    height: 48px;
+    display: inline-block;
 }
-.type>button{
-    border: 1px solid #ccc;
+.right-part .sub-nav.current{
+    border-bottom-color: rgb(249, 130, 108);
+}
+.right-part .sub-nav svg{
+    fill: rgb(149, 157, 165);
+    vertical-align: text-bottom;
+    margin-right: 4px;
+}
+.right-part .repo-num{
+    min-width: 20px;
+    padding: 0 6px;
+    text-align: center;
+    font-weight: 500px;
+    color: #24292e;
+    line-height: 18px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    background-color: rgba(209, 213, 218, 0.5);
+    border-radius: 2em;
+    margin-left: 4px;
+}
+.right-part .caption{
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 400;
+}
+.right-part .sub-nav:nth-child(2) .caption{
+    font-weight: 600;
+}
+.right-part .search-filter form{
+    display: flex;
+    padding: 16px 0;
+}
+.right-part #repo-search{
+    margin-right: 16px;
+    flex: 1;
+}
+.right-part #repo-search input{
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color:#24292e;
+    vertical-align: middle;
+    width: 100%;
+    border: 1px solid #e1e4e8;
     border-radius: 6px;
-    width: 25%;
-    padding: 7px 16px 7px 7px;
+    outline: none;
+    box-shadow:rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
+}
+.right-part #repo-search input:focus{
+     border-color: #0366d6;
+     box-shadow:rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+.right-part #repo-filter{
+    display: flex;
+}
+.right-part .create-repo{
+    fill: rgba(255, 255, 255, 0.8);
+}
+.right-part .repo{
+    border-top: 1px solid rgb(234, 236, 239);
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+}
+.right-part .repo-left{
+    flex: 3;
+}
+.right-part .repo-right{
+    flex: 1;
+}
+.right-part .repo-name{
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+}
+.right-part .repo-name a{
+    color: rgb(3, 102, 214);
+    margin-bottom: 4px;
+}
+.right-part .repo-name a:hover{
+    text-decoration: underline;
+}
+.right-part .repo-forked{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgb(88, 96, 105);
+    margin-bottom: 8px;
+}
+.right-part .repo-forked a{
+    color: rgb(88, 96, 105);
+}
+.right-part .repo-forked a:hover{
+    color: rgb(3, 102, 214);
+}
+.right-part .repo-desc{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgb(88, 96, 105);
+    margin-bottom: 16px;
+}
+.right-part .repo-meta{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgb(88, 96, 105);
+    margin-top: 16px;
+}
+.right-part .repo-lang-legend{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #f1e05a;
+    display: inline-block;
+}
+.right-part .meta{
+    margin-right: 16px;
     cursor: pointer;
 }
-.type>button.list-visible{
+.right-part .meta:first-child{
     cursor: default;
 }
-.type .type-list{
+.right-part .meta:first-child:hover{
+    color: rgb(88, 96, 105);
+}
+.right-part .btn-star,
+.filter-btn{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #24292e;
+    padding: 3px 12px;
+    background-color: rgb(250, 251, 252);
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
+    border-radius: 6px;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    /* width: 68px; */
+    height: 28px;
+    cursor: pointer;
+}
+.right-part .btn-star:hover{
+    background-color: rgb(237, 239, 242);
+}
+.right-part .btn-star svg{
+    fill: rgb(106, 115, 125);
+    vertical-align: text-bottom;
+}
+.right-part .repo-private{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #586069;
+    border-radius: 24px;
+    border: 1px solid rgb(225, 228, 232);
+    padding: 0 7px;
+    margin: 0 0 4px 8px;
+    width: 54px;
+    height: 20px;
+}
+.btn-star .fill{
+    display: none;
+}
+.btn-star .stroke{
+    display: initial;
+}
+.btn-star.starred .fill{
+    display: initial
+}
+.btn-star.starred .stroke{
+    display: none
+}
+
+
+/*/////////////// Click Drop-down ////////////////*/
+.drop-down{
+    position: relative;
+}
+.type>button,
+.language>button{
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px 16px 5px 16px;
+    cursor: pointer;
+    height: 32px;
+    width: 104px;
+    margin-right: 8px;
+    font-size: 14px;
+    color: rgb(106, 115, 125);
+}
+.drop-down .current-selection{
+    color: #24292e;
+    font-weight: 500;
+}
+.language>button{
+    width: 136px;
+}
+button.list-visible{
+    cursor: default;
+}
+.type .type-list,
+.language .type-list{
     position: absolute;
     border: 1px solid #ccc;
-    width: 25%;
     border-radius: 6px;
     padding-top: 7px;
     transition: all 0.5s ease;
     z-index: 20;
 }
-.type>button.list-visible+.type-list{
+.type>button.list-visible+.type-list,
+.language>button.list-visible+.type-list{
     opacity: 1;
     transform: translateY(20px);
 }
-.type .heading{
+.type .heading,
+.language .heading{
     padding: 7px 16px 7px 16px;
     height: 32px;
     display: flex;
     justify-content: space-between;
 }
-.type .cross,
-.type .check
+.cross,
+.check
 {
     height: 18px;
     width: 18px;
 }
-.type .cross{
+.cross{
     cursor: pointer;
 }
-.type .options{
+.type .options,
+.language .options{
    display: flex;
    justify-content: flex-start;
    padding: 8px;
@@ -449,11 +656,32 @@ ul{
    border-top: 1px solid #ddd;
    cursor: pointer;
 }
-.type .options:hover{
+.type .options:hover,
+.language .options:hover{
     background-color: rgb(246, 248, 250);
 }
-.type .options span{
+.type .options span,
+.language .options span{
     margin-left: 10px
+}
+.new-repo{
+    color: #fff;
+    background-color: #2ea44f;
+    border-color: #1b1f2326;
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
+    cursor: pointer;
+    width: 83px;
+    height: 32px;
+    padding: 5px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 6px;
+}
+.new-repo:hover{
+    background-color: #2c974b;
 }
 
 /* Misc */
@@ -500,12 +728,44 @@ ul{
     visibility: visible;
     opacity: 1;
 }
+.right-part .repo .repo-right{
+   display: flex;
+   justify-content: flex-end;
+}
+.right-part .repo .repo-right .btn-star{
+    margin-top: 5px;
+ }
+ .right-part .repo{
+    align-items: flex-start;
+}
+ .right-part .repo-license{
+     margin-right: 16px;
+ }
+
 /* End of Misc */
 @media (min-width: 992px) and (max-width:1180px) {
     .left-part .circle .status{
         top: 75%;
         left: 75%;
     }
+}
+
+@media (max-width:991px){
+    .tabs-wrapper .container{
+        padding: 0 24px;
+    }
+    .left-part{
+        padding: 0 8px;
+    }
+    .right-part{
+        padding: 0 8px;
+    }
+    .right-part .repo{
+        align-items: center;
+    }
+    .right-part .repo .repo-right .btn-star{
+        margin-top: 0;
+     }
 }
 
 @media (min-width:768px) and (max-width:991px){

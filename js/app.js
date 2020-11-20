@@ -1,13 +1,23 @@
-const typeDropDownBtn = document.querySelector('.type button')
-const typeList = document.querySelector('.type .type-list')
-const typeCurrentSelection = document.querySelector('.type button .current-selection')
+const typeDropDownBtn = document.querySelector('.type button');
+const typeList = document.querySelector('.type .type-list');
+const typeCurrentSelection = document.querySelector('.type button .current-selection');
 const typeOptions = document.querySelector('.type .type-options')
-const close = document.querySelector('.type .cross')
-const hamburger = document.querySelector('.menu.nav-icons')
+const close = document.querySelector('.type .cross');
+const hamburger = document.querySelector('.menu.nav-icons');
 const mobileMenu = document.querySelector('.nav-item.search-field')
+const rightPart = document.querySelector('.repository.right-part');
 
 hamburger.addEventListener('click', function(e){
     mobileMenu.classList.toggle('desktop');
+})
+
+rightPart.addEventListener('click', function(e){
+    const btn = e.target.closest('.btn-star');
+    if(btn){
+        btn.classList.toggle('starred')
+        const starText = btn.querySelector('.user-review')
+        starText.textContent = btn.classList.contains('starred')? 'Unstar' : 'Star'
+    }
 })
 
 close.addEventListener('click', function(e){
@@ -32,4 +42,5 @@ typeOptions.addEventListener('click', function(e){
     typeDropDownBtn.classList.toggle('list-visible')
 })
 
-console.log(typeDropDownBtn)
+
+// console.log(typeDropDownBtn)
