@@ -35,9 +35,9 @@ ul{
 }
 
 /* /////////////////Utilities/////////////////// */
-.sticky {
+/* .sticky {
     position: sticky !important;
-}
+} */
 .hide{
     display: none;
 }
@@ -46,6 +46,7 @@ ul{
 }
 .fade-in{
     opacity: 1;
+    z-index: 20;
 }
 .d-block{
     display: block;
@@ -111,8 +112,6 @@ ul{
 .nav-icons:hover{
     fill: rgba(255, 255, 255, 0.7);
 }
-
- /* ////////////////Search Input///////////// */
  .nav-item .search-form{
     background-color: #24292e;
     height: 62px;
@@ -179,6 +178,10 @@ ul{
 #search-box:focus::placeholder {
   color:#6a737d;
 }
+#repo-search input::placeholder{
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .caret{
     margin-left: 3px;
     border-top: 4px solid #fff;
@@ -188,6 +191,7 @@ ul{
 }
 .drop-menus{
     cursor: pointer;
+    position: relative;
 }
 .drop-menus:hover .caret{
     opacity: 0.7;
@@ -198,6 +202,26 @@ ul{
 }
 .msg-link{
     position: relative;
+}
+.msg-link:after{
+    content: 'You have unread notifications';
+    position: absolute;
+    background-color:#24292e;
+    font-size: 12px;
+    line-height: 18px;
+    width: 170px;
+    right: 0;
+    top: 140%;
+    padding: 4px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 300;
+    color: #fff;
+    font-family: 'Segoe UI';
+    display: none;
+}
+.msg-link:hover:after{
+    display: block;
 }
 #notification-ball{
     position: absolute;
@@ -213,13 +237,108 @@ ul{
     border-radius: 50%;
 }
 
+.drop-menus.on{
+    cursor: default;
+}
+.nav-item .menu-items{
+    position: absolute;
+    width: 160px;
+    padding: 4px 0;
+    display: none;
+    margin-top: 8px;
+    top: 100%;
+    right: 0;
+    z-index: 100;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px 0px;
+    border: 1px solid rgb(225, 228, 232)
+}
+.nav-item .menu-items:before{
+    position: absolute;
+    content: '';
+    z-index: 150;
+    border-bottom: 8px solid #fff;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    border-top: 8px solid transparent;
+    right: 9px;
+    top: -16px;
+}
+.nav-item .menu-items a{
+    padding: 4px 8px 4px 16px;
+    display: block;
+    overflow: hidden;
+    color: #24292e;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.nav-item .menu-items a:hover{
+    color: #fff;
+    background-color:  rgb(3, 102, 214);
+    outline: none;
+}
+
+.nav-item.second .menu-items{
+    width: 178px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #24292e;
+    display: none;
+}
+.nav-item.on .menu-items,
+.nav-item.second.on .menu-items{
+    display: initial;
+}
+.nav-item.second .menu-items>div{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.nav-item.second .menu-items>div:not(:last-child){
+    border-bottom: 1px solid rgb(225, 228, 232);
+}
+.nav-item.second .menu-items>div:last-of-type{
+    padding-bottom: 4px;
+}
+.nav-item.second .signedIn{
+    padding: 8px 16px;
+}
+.nav-item.second .status-mobile img{
+    width: 20px;
+    height: 15px;
+}
+.nav-item.second .status-mobile{
+    display: flex;
+    width: 146px;
+    height: 30px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(225, 228, 232);
+    border-radius: 6px;
+}
+
+
 /* ////////////////Tabs//////////////////// */
+.tabs-wrapper{
+    border-bottom: 1px solid #eee;
+}
 .tabs{
     height: 49px;
+    margin: 0 -16px;
     margin-top: 24px;
-    border-bottom: 1px solid #eee;
     z-index: 10;
     display: flex;
+}
+.tabs-wrapper .container{
+    /* position: fixed; */
+    /* top: 40px; */
+}
+.tabs.mobile{
+    display: none;
 }
 .left-part{
     flex-basis: 25%;
@@ -229,15 +348,41 @@ ul{
     flex-basis: 75%;
     padding: 0 16px;
 }
+.tabs-left.left-part>div{
+    align-items: center;
+    height: 48px;
+    display: none;
+}
+.main.alt .tabs-left.left-part>div{
+    display: flex;
+}
+.tabs-left.left-part img{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.tabs-left.left-part>div>span{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #24292e;
+}
 /* /////////////////Content Left Part//////////////// */
 .content{
     display: flex;
     margin: 0 -16px;
 }
+.left-part .offset{
+    margin-top: -32px;
+}
 .left-part .circle{
     /* border: 1px solid black; */
     position: relative;
     overflow: visible;
+    z-index: 10;
+    /* visibility: hidden; */
 }
 .left-part .circle img{
     border-radius: 50%;
@@ -288,6 +433,9 @@ ul{
     font-size: 12px;
     color: rgb(3, 102, 214);
 }
+.left-part .status-mobile{
+    display: none;
+}
 .left-part .profile-icons,
 .right-part .profile-icons,
 .right-part .repo-license svg,
@@ -304,6 +452,9 @@ ul{
    flex-direction: column;
    color: #24292e;
 }
+.main.alt .left-part #name-container h1{
+   display: none;
+ }
 .left-part #name{
     font-size: 26px;
     line-height: 1.25;
@@ -314,6 +465,9 @@ ul{
     font-weight: 300;
     line-height: 24px;
     color: rgb(88, 96, 105);
+}
+.left-part #followers-container{
+    padding-bottom: 16px;
 }
 .left-part #followers-container>div{
     display: flex;
@@ -356,7 +510,7 @@ ul{
 }
 .left-part .dot{
     line-height: 10px;
-    padding: 0 2px 8px 2px;
+    padding: 0 3px 7px 3px;
     display: inline-block;
     color: #24292e;
 }
@@ -399,11 +553,16 @@ ul{
     color: #24292e;
 }
 /* /////////////////Content Right Part//////////////// */
+.right-part .sub-nav-container{
+    display: flex;
+    /* border: 1px solid black; */
+}
 .right-part .sub-nav{
     padding: 8px 16px;
     font-size: 14px;
     line-height: 30px;
     color: #24292e;
+    border: none;
     border-bottom: 2px solid transparent;
     font-weight: 400;
     height: 48px;
@@ -412,16 +571,21 @@ ul{
 .right-part .sub-nav.current{
     border-bottom-color: rgb(249, 130, 108);
 }
+.right-part .sub-nav:hover{
+    border-bottom-color: rgb(209, 213, 218);
+}
 .right-part .sub-nav svg{
     fill: rgb(149, 157, 165);
     vertical-align: text-bottom;
     margin-right: 4px;
 }
+.right-part .sub-nav.current svg{
+    fill: #24292e;
+}
 .right-part .repo-num{
     min-width: 20px;
     padding: 0 6px;
     text-align: center;
-    font-weight: 500px;
     color: #24292e;
     line-height: 18px;
     font-size: 12px;
@@ -554,9 +718,14 @@ ul{
     box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
     border-radius: 6px;
     border: 1px solid rgba(27, 31, 35, 0.15);
-    /* width: 68px; */
     height: 28px;
     cursor: pointer;
+}
+.right-part .language .filter-btn{
+    margin-right: 0;
+}
+.right-part .filter-btn:hover{
+    background-color: rgb(243, 244, 246);
 }
 .right-part .btn-star:hover{
     background-color: rgb(237, 239, 242);
@@ -594,25 +763,25 @@ ul{
 /*/////////////// Click Drop-down ////////////////*/
 .drop-down{
     position: relative;
+ 
 }
 .type>button,
 .language>button{
+    position: relative;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 5px 16px 5px 16px;
     cursor: pointer;
     height: 32px;
-    width: 104px;
+    width: auto;
     margin-right: 8px;
     font-size: 14px;
     color: rgb(106, 115, 125);
+    z-index: 5;
 }
 .drop-down .current-selection{
     color: #24292e;
     font-weight: 500;
-}
-.language>button{
-    width: 136px;
 }
 button.list-visible{
     cursor: default;
@@ -622,21 +791,37 @@ button.list-visible{
     position: absolute;
     border: 1px solid #ccc;
     border-radius: 6px;
-    padding-top: 7px;
     transition: all 0.5s ease;
-    z-index: 20;
+    right: 8px;
+    width: 300px;
+    height: 265px;
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+    color: #24292e;
+    top:20px;
+}
+.language .type-list{
+    right: 0;
 }
 .type>button.list-visible+.type-list,
 .language>button.list-visible+.type-list{
     opacity: 1;
     transform: translateY(20px);
+    z-index: 25;
 }
 .type .heading,
 .language .heading{
-    padding: 7px 16px 7px 16px;
+    padding: 7px 7px 7px 16px;
     height: 32px;
     display: flex;
     justify-content: space-between;
+    font-weight: 600;
+}
+.btn-close{
+    border: none;
+    background-color: transparent;
 }
 .cross,
 .check
@@ -646,12 +831,16 @@ button.list-visible{
 }
 .cross{
     cursor: pointer;
+    fill: rgb(149, 157, 165);
+}
+.btn-close:hover .cross{
+    fill: #24292e;
 }
 .type .options,
 .language .options{
    display: flex;
    justify-content: flex-start;
-   padding: 8px;
+   padding: 7px;
    padding-left: 20px;
    border-top: 1px solid #ddd;
    cursor: pointer;
@@ -667,8 +856,8 @@ button.list-visible{
 .new-repo{
     color: #fff;
     background-color: #2ea44f;
-    border-color: #1b1f2326;
-    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px inset;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px 0px;
     cursor: pointer;
     width: 83px;
     height: 32px;
@@ -679,6 +868,7 @@ button.list-visible{
     white-space: nowrap;
     vertical-align: middle;
     border-radius: 6px;
+    margin-left: 16px;
 }
 .new-repo:hover{
     background-color: #2c974b;
@@ -698,20 +888,15 @@ button.list-visible{
     border-radius: 6px;
     font-size: 12px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-    /* Position the tooltip text */
     position: absolute;
     z-index: 1;
     top: 101%;
     left: 50%;
     margin-left: -60px;
-
-    /* Fade in tooltip */
     opacity: 0;
     transition: opacity 0.3s;
   }
   
-  /* Tooltip arrow */
 .circle .tooltiptext::after {
     content: "";
     position: absolute;
@@ -722,8 +907,6 @@ button.list-visible{
     border-style: solid;
     border-color: transparent transparent #24292e transparent;
 }
-  
- /* Show the tooltip text when you mouse over the tooltip container */
 .circle:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
@@ -741,8 +924,8 @@ button.list-visible{
  .right-part .repo-license{
      margin-right: 16px;
  }
-
 /* End of Misc */
+
 @media (min-width: 992px) and (max-width:1180px) {
     .left-part .circle .status{
         top: 75%;
@@ -811,6 +994,8 @@ button.list-visible{
         margin-right: 0;
     }
     .nav-item.search-field{
+        position: relative;
+        z-index: 100;
         flex-basis: 100vw;
         order: 2;
         background-color: #24292e;
@@ -852,4 +1037,112 @@ button.list-visible{
     .nav-link .sign-out{
         margin-right: 3px;
     }
+    .content{
+        flex-direction: column;
+    }
+    .left-part .profile-sections{
+        display: none;
+    }
+    .tabs.desktop{
+        display: none;
+    }
+    .tabs.mobile{
+        display: initial;
+        margin:0;
+    }
+    .tabs-right.right-part{
+        padding: 0;
+        margin: 0 -16px;
+        border-bottom: 1px solid #eee;
+    }
+    .right-part .search-filter form{
+        flex-direction: column;
+    }
+    .right-part #repo-search{
+        margin: 0 0 16px 0;
+    }
+    .right-part #repo-filter{
+        justify-content: flex-end;
+    }
+    .right-part #repo-filter .new-repo{
+        margin-left: auto;
+    }
+    .container{
+        padding: 0 16px;
+    }
+    .container.menu-out{
+        margin-top: 330px;
+    }
+    .content{
+        margin: 0;
+    }
+    .profile.left-part,
+    .repository.right-part{
+        padding: 0;
+    }
+    .sub-nav-container{
+        padding: 0 16px;
+    }
+    .left-part .offset{
+        margin-top: 0;
+    }
+    .offset>div{
+        display: flex;
+        margin-bottom: 24px;
+        align-items: center;
+    }
+    .offset>div .circle{
+        flex: 1;
+        margin-right: 16px;
+        padding-top: 2px;
+    }
+    .offset>div #name-container{
+        flex: 5;
+        padding: 0 0 0 8px;
+    }
+    .left-part .circle .status{
+        display: none;
+    }   
+    .right-part .repo-left{
+        flex: 5
+    }
+    .left-part .status-mobile{
+        display: block;
+        background-color: #fff;
+        height: 31px;
+        border: 1px solid #eee;
+        width: 100%;
+        border-radius: 6px;
+        padding: 4px 8px;
+        position: relative;
+        margin-bottom: 8px;
+    }
+    .left-part .status-mobile p{
+        padding-left: 30px;
+        font-weight: 400;
+        line-height: 20px;
+        font-size: 12px;
+        color: #24292e;
+    }
+    .left-part .status-mobile p:hover{
+        color: #0366d6;
+    }
+    .left-part .comment{
+        left: 20px;
+    }
+    .left-part .edit-profile-btn{
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 540px){
+    .tabs-right.right-part svg{
+        display: none;
+    }
+}
+
+.tabs-wrapper.sticky{
+    position: sticky;
+    top: 0;
+    background: #fff;
 }
