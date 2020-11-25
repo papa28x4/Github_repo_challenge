@@ -4,7 +4,9 @@ const main = document.querySelector('.main')
 const circle = document.querySelector('.circle')
 
 wrapper.addEventListener('click', function(e){
+    // console.log(e.target)
     const dropdowns = document.querySelectorAll('.nav-item.drop-menus')
+    const dropDownBtns = document.querySelectorAll('.filter-btn')
     if(e.target.closest('.menu.nav-icons')){
         const mobileMenu = document.querySelector('.nav-item.search-field')
         const container = document.querySelector('.main>.container');
@@ -22,8 +24,8 @@ wrapper.addEventListener('click', function(e){
     }else if(e.target.classList.contains('second')){
         dropdowns[0].classList.remove('on')
         dropdowns[1].classList.toggle('on')
-    }else if(e.target.classList.contains("filter-btn")){
-        const dropDownBtn = e.target
+    }else if(e.target.closest(".filter-btn")){
+        const dropDownBtn = e.target.closest(".filter-btn")
         dropDownBtn.classList.toggle('list-visible')
     }else if(e.target.closest('.btn-close')){
         const dropDownBtn = e.target.closest('.box-list').children[0];
@@ -31,6 +33,7 @@ wrapper.addEventListener('click', function(e){
     }else if(e.target.closest('.options-list')){
         const typeOptions = e.target.closest('.options-list')
         const dropDownBtn = e.target.closest('.box-list').children[0]
+        if(!dropDownBtn.classList.contains('list-visible')) return
         const currentSelection = dropDownBtn.children[0];
         const typeChecked = typeOptions.querySelector('.fade-in')
         const li = e.target.closest('li')
@@ -39,11 +42,11 @@ wrapper.addEventListener('click', function(e){
         typeChecked.classList.remove('fade-in')
         img.classList.add('fade-in')
         const option = span.textContent
-        console.log('option', option)
         currentSelection.innerText = option
         dropDownBtn.classList.toggle('list-visible')
     }else{
         dropdowns.forEach(dropdown => dropdown.classList.remove('on'))
+        dropDownBtns.forEach(dropDownBtn =>  dropDownBtn.classList.remove('list-visible') )
     }
 })
 

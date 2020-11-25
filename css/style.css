@@ -333,10 +333,6 @@ ul{
     z-index: 10;
     display: flex;
 }
-.tabs-wrapper .container{
-    /* position: fixed; */
-    /* top: 40px; */
-}
 .tabs.mobile{
     display: none;
 }
@@ -368,6 +364,12 @@ ul{
     font-size: 14px;
     line-height: 18px;
     color: #24292e;
+}
+.tabs-wrapper.sticky{
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 7;
 }
 /* /////////////////Content Left Part//////////////// */
 .content{
@@ -633,6 +635,10 @@ ul{
 .right-part .create-repo{
     fill: rgba(255, 255, 255, 0.8);
 }
+.repository.right-part>ul{
+    position: relative;
+    z-index: 6;
+}
 .right-part .repo{
     border-top: 1px solid rgb(234, 236, 239);
     padding: 24px 0;
@@ -810,6 +816,7 @@ button.list-visible{
     opacity: 1;
     transform: translateY(20px);
     z-index: 25;
+    cursor: pointer;
 }
 .type .heading,
 .language .heading{
@@ -843,7 +850,6 @@ button.list-visible{
    padding: 7px;
    padding-left: 20px;
    border-top: 1px solid #ddd;
-   cursor: pointer;
 }
 .type .options:hover,
 .language .options:hover{
@@ -933,6 +939,12 @@ button.list-visible{
     }
 }
 
+@media(max-width: 1024px){
+    .left-part #followers-container>div{
+        display: block;
+    }
+}
+
 @media (max-width:991px){
     .tabs-wrapper .container{
         padding: 0 24px;
@@ -969,6 +981,7 @@ button.list-visible{
         left: 72%;
     }
 }
+
 @media (max-width: 767px){
     .nav{
         justify-content: space-between;
@@ -1133,6 +1146,10 @@ button.list-visible{
     .left-part .edit-profile-btn{
         margin-bottom: 0;
     }
+    .type .type-list, .language .type-list{
+        left: 0;
+        width: 200px;
+    }
 }
 
 @media (max-width: 540px){
@@ -1141,8 +1158,77 @@ button.list-visible{
     }
 }
 
-.tabs-wrapper.sticky{
-    position: sticky;
-    top: 0;
-    background: #fff;
+@media(max-width: 440px){
+    #followers-container{
+        margin-bottom: 12px;
+    }
+    #followers-container>div{
+        margin: 0 auto;
+    }
+    .right-part .sub-nav-container{
+        justify-content: center;
+    }
+    .right-part .sub-nav{
+        padding: 9px;
+    }
+    .right-part .sub-nav:first-child{
+        padding-left: 0;
+    }
+    .right-part .sub-nav:last-child{
+        padding-left: 0;
+    }
+    .right-part .repo-right{
+       align-self: flex-start;
+       margin-top: 5px;
+    }
+    .right-part .btn-star .user-review{
+        display: none
+    }
+    .right-part #repo-filter{
+        flex-wrap: wrap;
+    }
+    .right-part #repo-filter>*{
+        order: 2;
+    }
+    .right-part #repo-filter{
+        justify-content: flex-start;
+    }
+    .right-part .drop-down:nth-child(2) .filter-btn{
+       float: right; 
+    }
+    .right-part #repo-filter .new-repo{
+        margin-bottom: 16px;
+        flex-basis: 100%;
+        text-align: center;
+        order: 1;
+    }
+    .right-part .repo-num{
+        margin: 0;
+    }
+    .language .type-list{
+        right: 0;
+        left: auto;
+    }
+}
+
+@media(max-width: 359px){
+    .right-part .sub-nav-container{
+        overflow: scroll;
+    }
+    .right-part .sub-nav{
+        padding: 6px;
+    }
+    .right-part .caption{
+       font-size: 13px;
+       line-height: 26px;
+    }
+    .right-part .repo-num{
+        margin: 0;
+        font-size: 11px;
+        padding: 0 2px;
+    }
+    .type>button, .language>button{
+        padding: 5px 10px 5px 10px;
+        font-size: 12px;
+    }
 }
