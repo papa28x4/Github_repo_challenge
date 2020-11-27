@@ -12,6 +12,8 @@ body{
     margin: 0;
     font-size: 16px;
     font-family:'Segoe UI';
+    /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji; */
     font-weight: 400;
 }
 .container{
@@ -35,9 +37,6 @@ ul{
 }
 
 /* /////////////////Utilities/////////////////// */
-/* .sticky {
-    position: sticky !important;
-} */
 .hide{
     display: none;
 }
@@ -93,7 +92,6 @@ ul{
     font-size: 14px;
     line-height: 21px;
     font-family: 'Segoe UI Semibold';
-    /* font-weight: 400; */
     font-style: normal;
 }
 .nav-link.mobile{
@@ -320,7 +318,15 @@ ul{
     border: 1px solid rgb(225, 228, 232);
     border-radius: 6px;
 }
-
+.status-mobile.miniature>p{
+    padding-left: 8px;
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 12px;
+}
+.status-mobile.miniature>p:hover{
+    color: #0366d6;
+}
 
 /* ////////////////Tabs//////////////////// */
 .tabs-wrapper{
@@ -380,11 +386,9 @@ ul{
     margin-top: -32px;
 }
 .left-part .circle{
-    /* border: 1px solid black; */
     position: relative;
     overflow: visible;
     z-index: 10;
-    /* visibility: hidden; */
 }
 .left-part .circle img{
     border-radius: 50%;
@@ -423,9 +427,14 @@ ul{
     position: absolute;
     width: 20px;
     height: 15px;
-    top: 50%;
+    top: 0;
     left: 50%;
     transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+}
+.left-part .comment>div{
+    border: 1px solid transparent;
 }
 .left-part .status:hover .two{
     line-height: 38px;
@@ -467,6 +476,15 @@ ul{
     font-weight: 300;
     line-height: 24px;
     color: rgb(88, 96, 105);
+}
+.left-part .user-bio{
+    margin-bottom: 16px;
+}
+.left-part .user-bio>p{
+    font-weight: 400px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #24292e;
 }
 .left-part #followers-container{
     padding-bottom: 16px;
@@ -557,7 +575,6 @@ ul{
 /* /////////////////Content Right Part//////////////// */
 .right-part .sub-nav-container{
     display: flex;
-    /* border: 1px solid black; */
 }
 .right-part .sub-nav{
     padding: 8px 16px;
@@ -640,10 +657,12 @@ ul{
     z-index: 6;
 }
 .right-part .repo{
-    border-top: 1px solid rgb(234, 236, 239);
     padding: 24px 0;
     display: flex;
     align-items: center;
+}
+.right-part .repo:not(:first-child){
+    border-top: 1px solid rgb(234, 236, 239);
 }
 .right-part .repo-left{
     flex: 3;
@@ -695,12 +714,17 @@ ul{
     color: rgb(88, 96, 105);
     margin-top: 16px;
 }
+.right-part .repo-lang.meta{
+   /* padding-top: 3px; */
+   display: inline-flex;
+   align-items: center;
+}
 .right-part .repo-lang-legend{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #f1e05a;
     display: inline-block;
+    margin-right: 3px;
 }
 .right-part .meta{
     margin-right: 16px;
@@ -714,7 +738,7 @@ ul{
 }
 .right-part .btn-star,
 .filter-btn{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI';
     font-size: 12px;
     font-weight: 500;
     line-height: 20px;
@@ -765,7 +789,19 @@ ul{
     display: none
 }
 
-
+.right-part .repo-stat{
+    border-top: 1px solid rgb(234, 236, 239);
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 400;
+    color: #24292e;
+}
+.right-part .repo-stat>p{
+    border-bottom: 1px solid rgb(234, 236, 239);
+    padding: 16px 0;
+    width: auto;
+    display: inline-block;
+}
 /*/////////////// Click Drop-down ////////////////*/
 .drop-down{
     position: relative;
@@ -1120,7 +1156,7 @@ button.list-visible{
         flex: 5
     }
     .left-part .status-mobile{
-        display: block;
+        display: flex;
         background-color: #fff;
         height: 31px;
         border: 1px solid #eee;
@@ -1131,11 +1167,12 @@ button.list-visible{
         margin-bottom: 8px;
     }
     .left-part .status-mobile p{
-        padding-left: 30px;
+        padding-left: 8px;
         font-weight: 400;
         line-height: 20px;
         font-size: 12px;
         color: #24292e;
+        display: inline-block;
     }
     .left-part .status-mobile p:hover{
         color: #0366d6;
@@ -1143,12 +1180,22 @@ button.list-visible{
     .left-part .comment{
         left: 20px;
     }
+    .left-part .status-mobile>div{
+        display: inline-block;
+    }
     .left-part .edit-profile-btn{
         margin-bottom: 0;
     }
     .type .type-list, .language .type-list{
         left: 0;
         width: 200px;
+    }
+    .left-part .dot {
+        line-height: 10px;
+        padding: 0 0 7px 0;
+        display: inline-block;
+        color: #24292e;
+        vertical-align: middle;
     }
 }
 

@@ -1,7 +1,8 @@
 const wrapper = document.querySelector('#wrapper');
 const tabsWrapper = document.querySelector('.tabs-wrapper');
 const main = document.querySelector('.main')
-const circle = document.querySelector('.circle')
+// const circle = document.querySelector('.circle')
+// console.log(circle)
 
 wrapper.addEventListener('click', function(e){
     // console.log(e.target)
