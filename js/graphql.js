@@ -263,11 +263,10 @@ const fetchGithubData = async () => {
                         },
                         body: JSON.stringify({query: payload})
                     }).then(res=> res.json())
-    // console.log(response)   
+      
     document.querySelector('.repo-num').textContent =  response.data.viewer.repositories.totalCount
     let repos = response.data.viewer.repositories.nodes
     let userDetails = response.data.viewer
-    console.log(userDetails)
     
     renderUserInfo(userDetails)
     renderRepos(repos)
