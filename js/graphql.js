@@ -4,8 +4,6 @@ const userInfoArea = document.querySelector('.profile.left-part')
 const userAvatars = document.querySelectorAll('.user-avatar')
 const loginName = document.querySelectorAll('.login')
 const userMenu = document.querySelector('.status-mobile.miniature')
-console.log(userMenu)
-console.log(userAvatars, loginName)
 let lists = '';
 let circle;
 const github_options = {
@@ -51,6 +49,7 @@ const payload = `query
         parent{
           nameWithOwner
           forkCount
+          url
           licenseInfo {
             name
           }
@@ -101,16 +100,15 @@ const formatDate=(dateString)=>{
 }
 
 const renderRepos = repos => {
-    console.log(repos)
     repos.forEach(repo => {
         lists += `<li class="repo">
         <div class="repo-left">
             <h3 class="repo-name">
-                <a href="">${repo.name}</a>
+                <a href="${repo.url}">${repo.name}</a>
                 ${repo.isPrivate? `<span class="repo-private">Private</span>` : ''}
             </h3>
             ${repo.isFork? ` <p class="repo-forked">
-            Forked from <a href="">${repo.parent.nameWithOwner}</a>
+            Forked from <a href="${repo.parent.url}">${repo.parent.nameWithOwner}</a>
         </p>` : ''}
         
             ${repo.description? `  <p class="repo-desc">${repo.description}</p>` : ''}
