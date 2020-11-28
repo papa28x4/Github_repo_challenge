@@ -7,7 +7,7 @@ const userMenu = document.querySelector('.status-mobile.miniature')
 let lists = '';
 let circle;
 const github_options = {
-    "token": "adb05b2e91ad2e67aea495c9cee3e6c2b0e11303",
+    "token": `${atob("MTRiNjk2NzIyOTM0MDAwYTA0NWM1MDU0OTQ1NWEwMGNlM2FhZWFmZA==")}`,
     "username": "papa28x4",
     "limit" : 20,
     "privacy": "PUBLIC"
@@ -34,7 +34,7 @@ const payload = `query
     starredRepositories {
         totalCount
       }
-    repositories(first: ${limit}, privacy:${privacy}, orderBy: {field: UPDATED_AT, direction: DESC}) {
+    repositories(first: ${limit}, privacy:${privacy}, orderBy: {field: PUSHED_AT, direction: DESC}) {
       totalCount
       nodes {
         name
@@ -42,7 +42,7 @@ const payload = `query
         url
         stargazerCount
         viewerHasStarred
-        updatedAt
+        pushedAt
         forkCount
         isFork
         isPrivate
@@ -68,6 +68,7 @@ const payload = `query
 const formatDate=(dateString)=>{
     let date = "";
     let num = "";
+    // currentYear
     let timestamp = new Date(dateString).getTime() 
     if(timestamp + (28*86400000) < Date.now()){
         let z = new Date(timestamp).toDateString()
@@ -136,7 +137,7 @@ const renderRepos = repos => {
             </span>` : ''}
                 <span>
                     Updated 
-                    <span class="repo-date">${formatDate(repo.updatedAt)}</span>
+                    <span class="repo-date">${formatDate(repo.pushedAt)}</span>
                 </span>
             </div>
         </div>
@@ -263,7 +264,7 @@ const fetchGithubData = async () => {
                         },
                         body: JSON.stringify({query: payload})
                     }).then(res=> res.json())
-      
+    console.log(response)
     document.querySelector('.repo-num').textContent =  response.data.viewer.repositories.totalCount
     let repos = response.data.viewer.repositories.nodes
     let userDetails = response.data.viewer
