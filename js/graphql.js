@@ -219,26 +219,6 @@ const renderUserInfo = user => {
                             <span>Arctic Code Vault Contributor</span>
                         </div>
                     </div>
-                    <div id="organizations" class="profile-sections">
-                        <h2>Organizations</h2>
-                        <!-- <div>
-                            <a href="">
-                                <img alt="@team-muses" width="32" height="32" src="https://avatars0.githubusercontent.com/u/55638946?s=60&amp;v=4" class="avatar ">
-                            </a>
-                            <a href="">
-                                <img alt="@team-anduril" width="32" height="32" src="https://avatars2.githubusercontent.com/u/55351647?s=60&amp;v=4" class="avatar ">
-                            </a>
-                            <a href="">
-                                <img alt="@team-muses" width="32" height="32" src="https://avatars0.githubusercontent.com/u/55638946?s=60&amp;v=4" class="avatar ">
-                            </a>
-                            <a href="">
-                                <img alt="@team-granite" width="32" height="32" src="https://avatars3.githubusercontent.com/u/66477648?s=60&amp;v=4" class="avatar ">
-                            </a>
-                            <a href="">
-                                <img alt="@expenseng" width="32" height="32" src="https://avatars3.githubusercontent.com/u/69351735?s=60&amp;v=4" class="avatar ">
-                            </a>
-                        </div> -->
-                    </div>
                 </div>`
     
     userInfoArea.innerHTML = status
