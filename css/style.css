@@ -1206,6 +1206,10 @@ button.list-visible{
     .tabs-right.right-part svg{
         display: none;
     }
+    
+    .right-part .btn-star .user-review{
+        display: none
+    }
 }
 
 @media(max-width: 440px){
@@ -1230,9 +1234,6 @@ button.list-visible{
     .right-part .repo-right{
        align-self: flex-start;
        margin-top: 5px;
-    }
-    .right-part .btn-star .user-review{
-        display: none
     }
     .right-part #repo-filter{
         flex-wrap: wrap;
