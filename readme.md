@@ -1,5 +1,5 @@
 # BuyCoins Africa Coding Challenge
-Using the GraphQL GitHub API (https://developer.github.com/v4/explorer/), recreate your github profile page (the tab that lists your repositories). 
+Using the GraphQL GitHub API (https://developer.github.com/v4/explorer/), recreate your github profile page (the tab that lists your repositories). List 20 repositories max
 
 
 ## Contributing
